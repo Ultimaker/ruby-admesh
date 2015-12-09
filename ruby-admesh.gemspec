@@ -10,5 +10,5 @@ Gem::Specification.new do |s|
 
   s.version     = Admesh::VERSION
   s.files       = ["lib/admesh.rb"]
-  s.extensions = ["ext/admesh/extconf.rb"]
+  s.extensions  = ["ext/admesh/extconf.rb"]
 end

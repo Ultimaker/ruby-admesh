@@ -8,17 +8,23 @@ module Admesh
       private
 
       def run(args)
-        formatted_arg_pairs = args.map do |key, value|
+        exec "#{executable_path} #{format_args(args)}"
+      end
+
+      def executable_path
+        file_directory = File.dirname(__FILE__)
+        binary_path = File.join(file_directory, "..", "..", "ext", "admesh", "admesh", "admesh")
+        File.absolute_path(binary_path)
+      end
+
+      def format_args(args)
+        args.map do |key, value|
           if value == true
             "--#{key}"
           else
             "--#{key}=#{Shellwords.escape(value)}"
           end
-        end
-
-        file_directory = File.dirname(__FILE__)
-        executable = File.join(file_directory, "..", "..", "ext", "admesh", "admesh", "admesh")
-        exec "#{File.absolute_path(executable)} #{formatted_arg_pairs.join(' ')}"
+        end.join(" ")
       end
     end
   end
