@@ -2,14 +2,14 @@ module Admesh
   class Admesh
     class << self
       def help
-        run(help: true)
+        exec "#{executable_path} #{format_args(help: true)}"
+      end
+
+      def perform(file, options = {})
+        exec "#{executable_path} #{format_args(options)} #{file}"
       end
 
       private
-
-      def run(args)
-        exec "#{executable_path} #{format_args(args)}"
-      end
 
       def executable_path
         file_directory = File.dirname(__FILE__)
@@ -19,10 +19,12 @@ module Admesh
 
       def format_args(args)
         args.map do |key, value|
+          dasherized_key = key.to_s.gsub(/_/, "-")
+
           if value == true
-            "--#{key}"
+            "--#{dasherized_key}"
           else
-            "--#{key}=#{Shellwords.escape(value)}"
+            "--#{dasherized_key}=#{Shellwords.escape(value)}"
           end
         end.join(" ")
       end
