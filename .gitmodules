@@ -1,0 +1,3 @@
+[submodule "ext/admesh/admesh"]
+	path = ext/admesh/admesh
+	url = https://github.com/admesh/admesh
