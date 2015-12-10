@@ -1,4 +1,4 @@
-# ruby-admesh
+# ruby-admesh [![ruby-admesh](https://travis-ci.org/Ultimaker/ruby-admesh.svg?branch=master)](https://travis-ci.org/Ultimaker/ruby-admesh)
 
 The `ruby-admesh` gem wraps the
 [Admesh STL mesh manipulation tool](http://admesh.readthedocs.org/en/latest/index.html) in a Ruby 
