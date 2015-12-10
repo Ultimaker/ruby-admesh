@@ -1,17 +1,17 @@
 # ruby-admesh [![ruby-admesh](https://travis-ci.org/Ultimaker/ruby-admesh.svg?branch=master)](https://travis-ci.org/Ultimaker/ruby-admesh)
 
-The `ruby-admesh` gem wraps the
+The `admesh` gem wraps the
 [Admesh STL mesh manipulation tool CLI](http://admesh.readthedocs.org/en/latest/index.html) in a 
 Ruby gem. 
 
 ## Installation
 
-`ruby-admesh` has the Admesh software packaged, so installation of `Admesh` it not necessary. 
+The gem has the Admesh software packaged, so installation of `Admesh` it not necessary. 
 
 Add to `Gemfile`:
 
 ```
-gem "ruby-admesh", github: "Ultimaker/ruby-admesh"
+gem "admesh"
 ```
 
 Run `bundle install` and require the gem:
@@ -22,10 +22,10 @@ require "admesh"
 
 ## Perform file operations
 
-Perform file operations by running `Admhes::Admesh.perform(file, options = {})`. It uses the same
+Perform file operations by running `Admesh.perform(file, options = {})`. It uses the same
 options as [the admesh executable](http://admesh.readthedocs.org/en/latest/cli.html#options),
 but remember to underscore all options names (eg. `z_rotate` instead of `z-rotate`). The options
-are not manipulated or validated, they will be sent to `Asmesh` as-is.
+are not manipulated or validated, they will be sent to `Admesh` as-is.
 
 When the command was successful, the output is returned as a string. When the command fails,
 the output is returned contained in a `RuntimeError`.
@@ -78,5 +78,5 @@ For more information about running `admesh`, please refer to the
 ## Print help information
 
 ```
-Admesh::Admesh.help         # Prints the same info as "admesh --help"
+Admesh.help                 # Prints the same info as "admesh --help"
 ```
