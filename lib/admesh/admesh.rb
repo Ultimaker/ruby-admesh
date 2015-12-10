@@ -2,11 +2,11 @@ module Admesh
   class Admesh
     class << self
       def help
-        exec "#{executable_path} #{format_args(help: true)}"
+        run "#{executable_path} #{format_args(help: true)}"
       end
 
       def perform(file, options = {})
-        exec "#{executable_path} #{format_args(options)} #{file}"
+        run "#{executable_path} #{format_args(options)} #{file}"
       end
 
       private
@@ -27,6 +27,12 @@ module Admesh
             "--#{dasherized_key}=#{Shellwords.escape(value)}"
           end
         end.join(" ")
+      end
+
+      def run(command)
+        output = `#{command}`
+        success = $?.to_i == 0
+        success ? (return output) : (raise output)
       end
     end
   end
