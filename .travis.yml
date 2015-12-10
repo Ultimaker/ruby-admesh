@@ -1,0 +1,4 @@
+rvm:
+ - 2.1.5
+ - jruby-19mode
+script: rake spec
